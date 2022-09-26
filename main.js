@@ -103,35 +103,30 @@ elForm.addEventListener('submit', function(evt){
 
 evt.preventDefault(); 
 
-var newItem = document.createElement("li");  
-newItem.textContent = elInp.value; 
-elInp.value = "";
-newItem.classList.add("newItem");
-newItem.style.color = "red";  
-elList.appendChild(newItem);   
-elList.value = "";
 
+});   
+elBtn1.addEventListener("click", function () { 
+  record.start();  
+  }); 
+ 
 
-elBtn.addEventListener("click", function () {
+elBtn2.addEventListener('click', function(){ 
+  var newItem = document.createElement("li"); 
+  elList.appendChild(newItem);  
+   newItem.textContent = elInp.value;   
+  newItem.style.color = "red";   
+  elInp.value = "";
+  elList.value = "";  
+
+  elBtn.addEventListener('click', function(){ 
+
     elList.removeChild(newItem);
-     
+  })
 });   
 
-elBtn2.addEventListener("click", function () {
-    elList.removeChild(newItem);
-     
-});
+ 
 
-});
-
-
-elBtn1.addEventListener("click", function () { 
-record.start();  
-   
-});  
-
-
-record.onresult = function (evt) { 
+  record.onresult = function (evt) { 
     elInp.value = evt.results[0][0].transcript;
-    
- };
+   
+ }; 
